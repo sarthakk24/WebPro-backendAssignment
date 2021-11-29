@@ -57,7 +57,7 @@ const client = new MongoClient(`${process.env.MONGODB_ID}`);
 client.connect().then((mClient) => {
   db = mClient.db();
   console.log("Mongo client Connected");
-  app.listen(7000, function () {
+  app.listen(process.env.port || 7000, function () {
     console.log("server started on port 7000");
   });
 });
