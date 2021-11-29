@@ -9,6 +9,10 @@ body {
   display: none;
 }
 
+input {
+  margin-bottom: 20px;
+}
+
 /* button {
   width: 200px;
   border-radius: 10px;
