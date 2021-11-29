@@ -5,10 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Backend assignment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/styles.css" />
     <script defer src="/js/index.js"></script>
   </head>
   <body>
-    <h1>welcome to the backend assignment</h1>
+    <h1>Submit Information</h1>
+    <form>
+      <div>
+        <label for="name">Name :</label>
+        <input type="text" id="name" />
+      </div>
+      <div>
+        <label for="phone">Phone Number :</label>
+        <input type="text" id="phone" />
+      </div>
+      <div>
+        <label for="email">Email :</label>
+        <input type="text" id="email" />
+      </div>
+      <div>
+        <label for="portfolio">Portfolio :</label>
+        <input type="text" id="portfolio" />
+      </div>
+      <button type="submit" id="new-contact--submit">Submit</button>
+    </form>
+
+    <section class="id-display hidden">
+      <h1>Congratulation !!! Contact Successfully added to our database</h1>
+      <h2>Id : <span class="display-id">ID</span></h2>
+      <button class="search-contact">Search</button>
+    </section>
   </body>
 </html>

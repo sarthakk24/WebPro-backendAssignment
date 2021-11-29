@@ -1,5 +1,6 @@
 const express = require("express");
 const { nanoid } = require("nanoid");
+const { MongoClient } = require("mongoDb");
 
 const app = express();
 app.use(express.json());
@@ -7,33 +8,53 @@ app.use(express.urlencoded());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+let db;
+
 app.get("/", function (req, res) {
   res.render("index", {});
 });
 
-app.listen(7000, function () {
-  console.log("server has started on port 7000");
+app.get("/:slug", function (req, res) {
+  console.log(req.params.slug);
+  db.collection("contactInfo")
+    .findOne({ id: req.params.slug })
+    .then(function (document) {
+      res.render("contactDisplay", {
+        name: document.name,
+        phone: document.phone,
+        email: document.email,
+        portfolio: document.portfolio,
+      });
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.send("cant find the matching pair");
+    });
 });
 
-// const express = require("express");
-// const { nanoid } = require("nanoid");
-// const { MongoClient } = require("mongoDb");
+app.post("/api/newcontact", function (req, res) {
+  const res_obj = req.body;
 
-// const app = express();
-// app.use(express.json());
-// app.use(express.urlencoded());
-// app.set("view engine", "ejs");
+  const id = nanoid(5);
+  const name = res_obj.name;
+  const phone = res_obj.phone;
+  const email = res_obj.email;
+  const portfolio = res_obj.portfolio;
+  console.log(res_obj);
 
-// let db;
+  db.collection("contactInfo")
+    .insertOne({ id, name, phone, email, portfolio })
+    .then(() => {
+      res.json({ id });
+    });
+});
 
-// app.get("/", function (req, res) {
-//   res.render("index", {});
-// });
+const client = new MongoClient("");
 
-// const client = new MongoClient(
-//   "mongodb+srv://sarthakk24:9818122469SsS@cluster0.uibzn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-// );
-
-// app.listen(7000, function () {
-//   console.log("server started on port 7000");
-// });
+client.connect().then((mClient) => {
+  db = mClient.db();
+  console.log("Mongo client Connected");
+  app.listen(7000, function () {
+    console.log("server started on port 7000");
+  });
+});
