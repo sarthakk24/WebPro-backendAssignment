@@ -1,0 +1,25 @@
+{
+  "name": "webpro--backend-assgnmnt",
+  "version": "1.0.0",
+  "description": "The project is for web pro minor project 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarthakk24/WebPro-backendAssignment.git"
+  },
+  "author": "sarthak sachdeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarthakk24/WebPro-backendAssignment/issues"
+  },
+  "homepage": "https://github.com/sarthakk24/WebPro-backendAssignment#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongodb": "^4.2.0",
+    "nanoid": "^3.1.30"
+  }
+}
