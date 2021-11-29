@@ -1,12 +1,18 @@
 body {
   background-color: aliceblue;
-}
-
-h1,
-h2 {
+  font-weight: 700;
   font-family: "Dosis", sans-serif;
+  padding-left: 50px;
 }
 
 .hidden {
   display: none;
 }
+
+/* button {
+  width: 200px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  margin: 30px;
+  padding: 30px;
+} */

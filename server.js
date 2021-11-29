@@ -2,6 +2,9 @@ const express = require("express");
 const { nanoid } = require("nanoid");
 const { MongoClient } = require("mongoDb");
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
@@ -49,7 +52,7 @@ app.post("/api/newcontact", function (req, res) {
     });
 });
 
-const client = new MongoClient("");
+const client = new MongoClient(`${process.env.MONGODB_ID}`);
 
 client.connect().then((mClient) => {
   db = mClient.db();
